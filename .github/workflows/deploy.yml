@@ -6,6 +6,8 @@ on:
 
 jobs:
   run_deployment:
+    env:
+      GH_TOKEN: ${{ github.token }}
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch V2
