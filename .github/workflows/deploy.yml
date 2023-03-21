@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Dispatch V2
         run: |
-          gh workflow run run-tests.yml -f env=acceptance -f release=1.2 -f deployment_id=3
+          gh workflow run run-tests.yml -f env=acceptance -f release=1.2 -f deployment_id=3 --repo github.com/jonparker/smoke-test
       - name: Dispatch Event to Other Repo
         uses: actions/github-script@v4
         with:
