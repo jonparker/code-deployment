@@ -1,0 +1,29 @@
+name: Dispatch Event
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  run_deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch Event to Other Repo
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const { Octokit } = require("@octokit/rest");
+            const octokit = new Octokit({
+              auth: process.env.GITHUB_TOKEN
+            });
+
+            await octokit.request('POST /repos/:owner/:repo/dispatches', {
+              owner: 'jonparker',
+              repo: 'smoke-test',
+              event_type: 'run-smoke-test',
+              client_payload: {
+                env: 'acceptance',
+                release: '1.2',
+                deployment_id: '3'
+              }
+            }
