@@ -26,4 +26,4 @@ jobs:
                 release: '1.2',
                 deployment_id: '3'
               }
-            }
+            })
