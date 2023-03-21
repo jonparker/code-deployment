@@ -8,6 +8,10 @@ jobs:
   run_deployment:
     runs-on: ubuntu-latest
     steps:
+      - name: Dispatch V2
+        with:
+          run: |
+            gh workflow run run-tests.yml -f env=acceptance -f release=1.2 -f deployment_id=3
       - name: Dispatch Event to Other Repo
         uses: actions/github-script@v4
         with:
