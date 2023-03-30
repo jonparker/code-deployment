@@ -10,6 +10,9 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     runs-on: ubuntu-latest
     steps:
+      - name: Docker
+        run: |
+          docker image pull node@sha256:01627afeb110b3054ba4a1405541ca095c8bfca1cb6f2be9479c767a2711879e
       - name: Dispatch Via Curl
         run: |
           curl -H "Authorization: token $GH_TOKEN" \
